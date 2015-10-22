@@ -1,5 +1,4 @@
-function testTest(){
-    console.log('Test file loaded.')
-    return 1;
-}
-testTest();
+(function main(){
+    var node = document.querySelector('.node');
+    var widget = new SelectAndInputPair(node);
+})();

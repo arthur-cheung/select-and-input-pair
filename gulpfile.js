@@ -48,9 +48,9 @@ var taskFunctions = {
     scripts: function () {
         return new Promise(function (resolve, reject) {
             gulp.src(['src/scripts/utils/*.js', 'src/scripts/*.js'])
+                .pipe(concat('all.js'))
                 .pipe(jshint('.jshintrc'))
                 .pipe(jshint.reporter('default'))
-                .pipe(concat('all.js'))
                 .pipe(gulp.dest('dist/scripts'))
                 .pipe(rename({ suffix: '.min' }))
 //                .pipe(uglify())
