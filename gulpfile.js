@@ -34,6 +34,7 @@ var taskFunctions = {
     styles: function () {
         return new Promise(function (resolve, reject) {
             gulp.src('src/styles/**/*.css')
+                .pipe(concat('styles.css'))
                 .pipe(autoprefixer('last 2 version'))
                 .pipe(gulp.dest('dist/styles'))
                 .pipe(rename({ suffix: '.min' }))
