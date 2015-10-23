@@ -1,0 +1,39 @@
+.filterSelect{
+    width: 10em;
+    position: relative;
+}
+.filterSelect input{
+    width: 100%;
+}
+.filterSelect li{
+    list-style: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0.1em 0;
+}
+.filterSelect ul.hidden{
+    display: none;
+}
+.filterSelect ul{
+    margin: 0.1em auto;
+    padding: 0.5em;
+    border: silver 1px solid;
+    position: absolute;
+    top: 1.5em;
+    width: 92%;
+    left: 50%;
+    margin-left: -50%;
+}
+.filterSelect li:hover{
+    background-color: aliceblue;
+}
+.filterSelect .downArrow{
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #a3a3a3;
+    position: absolute;
+    right: 0;
+    top: 0.5em;
+}
