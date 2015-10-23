@@ -1,0 +1,10 @@
+.hidden{
+    display: none;
+}
+.red{
+    color: #b00000;
+}
+.selectAndInput > *{
+    display: inline-block;
+    margin: 1em;
+}
