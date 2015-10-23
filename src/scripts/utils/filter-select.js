@@ -1,9 +1,11 @@
-var FilterSelect = function(node, sourceData){
+var FilterSelect = function(node, sourceData, options){
     // Utility Functions
+    var instance = this;
     function createSourceList(data){
         sourceList.innerHTML = '';
         for(var i = 0; !!data && i < data.length; i++){
             var listItem = document.createElement('li');
+            listItem.setAttribute('data-index', i);
             if(typeof data[i] === 'object' && !!data[i].name && data[i].value){
                 listItem.innerText = data[i].name;
                 listItem.setAttribute('data-value', data[i].value);
@@ -13,9 +15,18 @@ var FilterSelect = function(node, sourceData){
                 listItem.setAttribute('data-value', data[i]);
             }
             listItem.addEventListener('click', function onSelect(){
-                input.value = this.innerText;
-                input.setAttribute('data-name', this.innerText);
-                input.setAttribute('data-value', this.getAttribute('data-value'));
+                if(input.value != this.innerText){
+                    input.value = this.innerText;
+                    input.setAttribute('data-name', this.innerText);
+                    input.setAttribute('data-value', this.getAttribute('data-value'));
+
+                    // Bind value to the instance
+                    var index = Number(this.getAttribute('data-index'));
+                    instance.value = sourceData[index];
+
+                    // Fire the onChange
+                    instance.onChange.bind(instance)();
+                }
             });
             sourceList.appendChild(listItem);
         }
@@ -58,6 +69,8 @@ var FilterSelect = function(node, sourceData){
     function hasClass(node, checkClass){
         return !!node && !!node.className && (node.className.split(' ').indexOf(checkClass) != -1)
     }
+    // Public functions
+    this.onChange = (!!options && options.onChange);
 
     // Set up the node
     var div = document.createElement('div');
